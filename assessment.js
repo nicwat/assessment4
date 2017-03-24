@@ -20,6 +20,7 @@ var printMenu = function() {
 };
 
 var penguinPebbles = 0;
+var yourPenguin = [];
 
 
 
@@ -50,7 +51,7 @@ var mainMenu = function() {
   sleep(400);
   printMenu();
   sleep(400);
-    var userSelection = sget("What would you like to do?").trim();
+    var userSelection = sget("What would you like to do, " + name + " ?").trim();
     
     if(userSelection.toLowerCase() == "math" || userSelection == 1) {
         doMath();
@@ -89,15 +90,15 @@ var userSum = sget("What is the sum of this equation?").trim();
 
 var doTrick = function() {
 	if (penguinPebbles >19) {
-		var trickChoice = sget ("Please pick a trick for your penguin to do:\n 1) Slide (-15 PenguinPebbles)\n2)Backflip(-10 PenguinPebbles)\n3)Sing (-20 PenguinPebbles)").trim();
+		var trickChoice = sget ("Please pick a trick for " + yourPenguin[0].penguinName + " to do, " +name + ":\n 1) Slide (-15 PenguinPebbles)\n2) Backflip(-10 PenguinPebbles)\n3) Sing (-20 PenguinPebbles)").trim();
 		if (trickChoice == 1) {
-			console.log("Your penguin is slipping and sliding across the way!");
+			console.log("" + yourPenguin[0].penguinName+ " is slipping and sliding across the way!");
 			penguinPebbles -=15;
 		} else if (trickChoice == 2) {
-			console.log("Your penguin has done a backflip!");
+			console.log(""+ yourPenguin[0].penguinName+" has done a backflip!");
 			penguinPebbles -=10;
 		} else if (trickChoice == 3) {
-			console.log("Your penguin is singing you a song....opera style!");
+			console.log("" +yourPenguin[0].penguinName+ "is singing you a song....opera style!");
 			penguinPebbles -=20;
 		} else {
       		console.log(userMessages.badInput);
@@ -128,6 +129,74 @@ function penguin(penguinName, penguinGender, penguinSpecies) {
 
 
 
+var userNamePrompt =function() {
+          var userName = sget("Welcome to PenguinPop! Please enter your name.").trim();
+          name = userName;
+          if (name.length <1) {
+            console.log("That's definitely not a name, please enter something.\n");
+            sleep(600);
+            userNamePrompt();
+         }
+};
+
+
+
+
+
+
+
+
+var namePrompt = function () {
+  var pname = sget("Thanks " +name + ". How about your penguin? What is your penguin's name?").trim();
+      penguinName = pname;
+      if (penguinName.length === 0) {
+        console.log ("Please enter an animal name.");
+        namePrompt();
+      }
+};
+
+var genderPrompt = function(){
+ var gender = sget("Is your penguin 'male' or 'female'? ").trim();
+   penguinGender = gender;
+    var lowercaseGender = penguinGender.toLowerCase();
+     if (lowercaseGender !== "male" && lowercaseGender !== "female") {
+      console.log ("Please type out Male or Female");
+      genderPrompt();
+   }
+};
+
+ var speciesPrompt = function() {
+    var species = sget("What species is your penguin (please type out species) f?\n - Emperor\n - Gentoo\n - Rockhopper").trim();
+    penguinSpecies = species;
+    var lowercaseSpecies = penguinSpecies.toLowerCase();
+     if (lowercaseSpecies !== "emperor" && lowercaseSpecies !== "gentoo"&& lowercaseSpecies !== "rockhopper"){
+      console.log("Please enter a valid species!");
+      speciesPrompt();
+  }
+
+    
+  };  
+
+var addPenguin = function() { 
+      namePrompt();
+       genderPrompt();
+       speciesPrompt();      
+    var newPenguin = new penguin(penguinName, penguinGender, penguinSpecies);
+    yourPenguin.push(newPenguin);
+    console.log("Thanks " +name + ". " + yourPenguin[0].penguinName+" has been created.");
+            sleep(2000);
+            mainMenu();
+    
+  };
+  // var penguinPrompt = function () {
+  //       var penguinName = sget("Now please enter the name of your zoo.").trim();
+  //       zoo = zooName;
+  //       if (zoo.length <1) {
+  //         console.log("You need at least one character to make a zoo name.\n");
+  //         sleep(600);
+  //         zooPrompt();
+  //        }
+  //      };
 
 
 
@@ -147,5 +216,7 @@ var exit = function() {
 
 
 run = function() { 
+userNamePrompt();
+addPenguin();
 mainMenu();  
 }();
