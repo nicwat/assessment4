@@ -19,6 +19,8 @@ var printMenu = function() {
     }
 };
 
+var penguinPebbles = 0;
+
 
 
 var mainMenuPrompts = { 
@@ -34,6 +36,10 @@ var mainMenuPrompts = {
 
 
 var userMessages = {
+	invalidNum: "This is an invalid number.",
+	firstNum: "Please enter the first number",
+	secondNum: "Please enter the second number",
+	singleNum: "Please enter a number",
 	badInput: "Please make a valid selection.",
 	exit: "You've logged out of the game. See ya!"
 };                      
@@ -58,8 +64,52 @@ var mainMenu = function() {
     }
 };
 
-var doMath 	= function() {};
-var doTrick = function() {};
+var doMath 	= function() {
+console.log( "Let's do some addition!");
+var autoHand = Math.floor((Math.random() * 9) + 0);
+var autoHand2 = Math.floor((Math.random() * 9) + 0);
+console.log(" " + autoHand+ "  +  " + autoHand2 + "  =  ???\n" );
+sum = autoHand+autoHand2;
+var userSum = sget("What is the sum of this equation?").trim();
+		if (userSum == sum) {
+			console.log("Good job!!! +5 PenguinPebbles");
+			penguinPebbles +=5;	
+			var returnToMenu = sget("Please hit any key to return to the main menu").trim();
+			mainMenu();
+
+		} else {
+			console.log("Sorry wrong answer... -5 PenguinPebbles");
+			penguinPebbles -=5;
+			sleep(2000);
+			mainMenu();
+}				
+};
+
+
+
+var doTrick = function() {
+	if (penguinPebbles >19) {
+		var trickChoice = sget ("Please pick a trick for your penguin to do:\n 1) Slide (-15 PenguinPebbles)\n2)Backflip(-10 PenguinPebbles)\n3)Sing (-20 PenguinPebbles)").trim();
+		if (trickChoice == 1) {
+			console.log("Your penguin is slipping and sliding across the way!");
+			penguinPebbles -=15;
+		} else if (trickChoice == 2) {
+			console.log("Your penguin has done a backflip!");
+			penguinPebbles -=10;
+		} else if (trickChoice == 3) {
+			console.log("Your penguin is singing you a song....opera style!");
+			penguinPebbles -=20;
+		} else {
+      		console.log(userMessages.badInput);
+      		doTrick();
+
+		}
+	}
+	else {console.log("Sorry. You do not have enough PenguinPebbles to do any tricks at this time.");
+		var returnToMenu = sget("Please hit any key to return to the main menu").trim();
+	}
+
+};
 
 
 
