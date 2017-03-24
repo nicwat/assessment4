@@ -188,18 +188,6 @@ var addPenguin = function() {
             mainMenu();
     
   };
-  // var penguinPrompt = function () {
-  //       var penguinName = sget("Now please enter the name of your zoo.").trim();
-  //       zoo = zooName;
-  //       if (zoo.length <1) {
-  //         console.log("You need at least one character to make a zoo name.\n");
-  //         sleep(600);
-  //         zooPrompt();
-  //        }
-  //      };
-
-
-
 
 
 
