@@ -108,6 +108,7 @@ var doTrick = function() {
 	}
 	else {console.log("Sorry. You do not have enough PenguinPebbles to do any tricks at this time.");
 		var returnToMenu = sget("Please hit any key to return to the main menu").trim();
+		mainMenu();
 	}
 
 };
@@ -197,6 +198,7 @@ var addPenguin = function() {
 var exit = function() {
   console.log(userMessages.exit);
   sleep(600);
+  process.exit();
 };
 
 
