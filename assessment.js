@@ -90,7 +90,7 @@ var userSum = sget("What is the sum of this equation?").trim();
 
 var doTrick = function() {
 	if (penguinPebbles >19) {
-		var trickChoice = sget ("Please pick a trick for " + yourPenguin[0].penguinName + " to do, " +name + ":\n 1) Slide (-15 PenguinPebbles)\n2) Backflip(-10 PenguinPebbles)\n3) Sing (-20 PenguinPebbles)").trim();
+		var trickChoice = sget ("Please pick a trick for " + yourPenguin[0].penguinName + " to do, " +name + ":\n1) Slide (-15 PenguinPebbles)\n2) Backflip(-10 PenguinPebbles)\n3) Sing (-20 PenguinPebbles)").trim();
 		if (trickChoice == 1) {
 			console.log("" + yourPenguin[0].penguinName+ " is slipping and sliding across the way!");
 			penguinPebbles -=15;
@@ -167,7 +167,7 @@ var genderPrompt = function(){
 };
 
  var speciesPrompt = function() {
-    var species = sget("What species is your penguin (please type out species) f?\n - Emperor\n - Gentoo\n - Rockhopper").trim();
+    var species = sget("What species is your penguin (please type out species) ?\n - Emperor\n - Gentoo\n - Rockhopper").trim();
     penguinSpecies = species;
     var lowercaseSpecies = penguinSpecies.toLowerCase();
      if (lowercaseSpecies !== "emperor" && lowercaseSpecies !== "gentoo"&& lowercaseSpecies !== "rockhopper"){
