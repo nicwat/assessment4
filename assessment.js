@@ -32,7 +32,7 @@ var mainMenuPrompts = {
                                  
                         doMath: "Enter 'Math' or '1' to answer a math problem to earn PenguinPebbles!",
                         trick: "Enter 'Trick' or '2' to have your penguin do tricks!",
-                        exit: "Enter 'Exit' or '5' to exit PenguinPop\n"
+                        exit: "Enter 'Exit' or '3' to exit PenguinPop\n"
                       };
 
 
