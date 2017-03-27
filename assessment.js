@@ -31,7 +31,7 @@ var mainMenuPrompts = {
                                  ,
                                  
                         doMath: "Enter 'Math' or '1' to answer a math problem to earn PenguinPebbles!",
-                        trick: "Enter 'Trick' or '2' to have your penguin do tricks!",
+                        trick: "Enter 'Trick' or '2' to have your penguin do tricks! You must have at least 20 PenguinPebbles before you have access to tricks.",
                         exit: "Enter 'Exit' or '3' to exit PenguinPop\n"
                       };
 
@@ -51,6 +51,7 @@ var mainMenu = function() {
   sleep(400);
   printMenu();
   sleep(400);
+  viewPebbles();
     var userSelection = sget("What would you like to do, " + name + " ?").trim();
     
     if(userSelection.toLowerCase() == "math" || userSelection == 1) {
@@ -75,7 +76,7 @@ var userSum = sget("What is the sum of this equation?").trim();
 		if (userSum == sum) {
 			console.log("Good job!!! +5 PenguinPebbles");
 			penguinPebbles +=5;	
-			var returnToMenu = sget("Please hit any key to return to the main menu").trim();
+			var returnToMenu = sget("Please hit enter to return to the main menu").trim();
 			mainMenu();
 
 		} else {
@@ -90,16 +91,28 @@ var userSum = sget("What is the sum of this equation?").trim();
 
 var doTrick = function() {
 	if (penguinPebbles >19) {
-		var trickChoice = sget ("Please pick a trick for " + yourPenguin[0].penguinName + " to do, " +name + ":\n1) Slide (-15 PenguinPebbles)\n2) Backflip(-10 PenguinPebbles)\n3) Sing (-20 PenguinPebbles)").trim();
+		var trickChoice = sget ("Please pick a trick for " + yourPenguin[0].penguinName + " to do, " +name + ":\n1) Slide (-15 PenguinPebbles)\n2) Backflip(-10 PenguinPebbles)\n3) Sing (-20 PenguinPebbles)\n(Please enter a number.)").trim();
 		if (trickChoice == 1) {
 			console.log("" + yourPenguin[0].penguinName+ " is slipping and sliding across the way!");
+      sleep(1000);
 			penguinPebbles -=15;
+      console.log("15 PenguinPebbles have been deducted.");
+      sleep(2000);
+      mainMenu();
 		} else if (trickChoice == 2) {
 			console.log(""+ yourPenguin[0].penguinName+" has done a backflip!");
+      sleep(1000);
 			penguinPebbles -=10;
+      console.log ("10 PenguinPebbles have been deducted.");
+      sleep(2000);
+      mainMenu();
 		} else if (trickChoice == 3) {
 			console.log("" +yourPenguin[0].penguinName+ "is singing you a song....opera style!");
+      sleep(1000);
 			penguinPebbles -=20;
+      console.log("20 PenguinPebbles have been deducted.");
+      sleep(2000);
+      mainMenu();
 		} else {
       		console.log(userMessages.badInput);
       		doTrick();
@@ -107,7 +120,7 @@ var doTrick = function() {
 		}
 	}
 	else {console.log("Sorry. You do not have enough PenguinPebbles to do any tricks at this time.");
-		var returnToMenu = sget("Please hit any key to return to the main menu").trim();
+		var returnToMenu = sget("Please hit enter to return to the main menu").trim();
 		mainMenu();
 	}
 
@@ -191,7 +204,9 @@ var addPenguin = function() {
   };
 
 
-
+var viewPebbles = function () {
+  console.log("PenguinPebble Balance: " + penguinPebbles + "\n");
+};
 
 
 
