@@ -25,9 +25,9 @@ var yourPenguin = [];
 
 
 var mainMenuPrompts = { 
-                        welcome:         "**************************************************************************\n" + 
-                                            "*         Welcome to PenguinPop!!!!            *\n" +
-                                            "**************************************************************************\n"  
+                        welcome:         "***************************************************\n" + 
+                                         "*            Welcome to PenguinPop!!!!            *\n" +
+                                         "***************************************************\n"  
                                  ,
                                  
                         doMath: "Enter 'Math' or '1' to answer a math problem to earn PenguinPebbles!",
